@@ -1,4 +1,6 @@
 import "./App.css";
+import { ContactList } from "./components/ContactsList/ContactsList";
+import { Filter } from "./components/Filter/Filter";
 import { ContactForm } from "./components/FormComponent/ContactForm";
 import { Section } from "./components/Section/Section";
 function App() {
@@ -7,7 +9,10 @@ function App() {
       <Section title="Phonebook">
         <ContactForm></ContactForm>
       </Section>
-      <h2>Contacts</h2>
+      <Section title="Contacts">
+        <Filter />
+        <ContactList></ContactList>
+      </Section>
     </>
   );
 }
