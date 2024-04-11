@@ -1,11 +1,12 @@
 import "./App.css";
-import { Form } from "./components/FormComponent/Form";
-
+import { ContactForm } from "./components/FormComponent/ContactForm";
+import { Section } from "./components/Section/Section";
 function App() {
   return (
     <>
-      <h2>PhoneBook</h2>
-      <Form></Form>
+      <Section title="Phonebook">
+        <ContactForm></ContactForm>
+      </Section>
       <h2>Contacts</h2>
     </>
   );

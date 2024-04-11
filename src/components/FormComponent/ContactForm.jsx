@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 
-export const Form = () => {
+export const ContactForm = () => {
   const [contacts, setContacts] = useState([]);
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -37,7 +37,6 @@ export const Form = () => {
 
   return (
     <div>
-      <h1>Contacts</h1>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
