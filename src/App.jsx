@@ -4,20 +4,33 @@ import { ContactList } from "./components/ContactsList/ContactsList";
 import { Filter } from "./components/Filter/Filter";
 import { ContactForm } from "./components/FormComponent/ContactForm";
 import { Section } from "./components/Section/Section";
+
 function App() {
   const [contacts, setContacts] = useState([]);
+  const [filteredContacts, setFilteredContacts] = useState([]);
 
   const handleAddContact = (newContact) => {
-    setContacts([...contacts, newContact]);
+    const updatedContacts = [...contacts, newContact];
+    setContacts(updatedContacts);
+    applyFilter(updatedContacts);
   };
+
+  const applyFilter = (contactsList) => {
+    const filterValue = filteredContacts.name || "";
+    const filtered = contactsList.filter((contact) =>
+      contact.name.toLowerCase().includes(filterValue.toLowerCase())
+    );
+    setFilteredContacts(filtered);
+  };
+
   return (
     <>
       <Section title="Phonebook">
-        <ContactForm onAddContact={handleAddContact}></ContactForm>
+        <ContactForm onAddContact={handleAddContact} />
       </Section>
       <Section title="Contacts">
-        <Filter />
-        <ContactList contacts={contacts}></ContactList>
+        <Filter onFilterChange={applyFilter} />
+        <ContactList contacts={filteredContacts} />
       </Section>
     </>
   );
