@@ -12,6 +12,14 @@ function App() {
   const [filter, setFilter] = useState("");
 
   const handleAddContact = (newContact) => {
+    const isDuplicate = contacts.some(
+      (contact) => contact.number === newContact.number
+    );
+
+    if (isDuplicate) {
+      alert("Kontakt o tej nazwie już istnieje w książce telefonicznej!");
+      return;
+    }
     const updatedContacts = [...contacts, { ...newContact, id: nanoid() }];
     setContacts(updatedContacts);
     applyFilter(updatedContacts, filter);
