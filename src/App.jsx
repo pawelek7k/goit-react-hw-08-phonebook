@@ -17,7 +17,7 @@ function App() {
     );
 
     if (isDuplicate) {
-      alert("Kontakt o tej nazwie już istnieje w książce telefonicznej!");
+      alert("Contact with this name already exists in the phonebook!");
       return;
     }
     const updatedContacts = [...contacts, { ...newContact, id: nanoid() }];
