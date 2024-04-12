@@ -41,6 +41,11 @@ function App() {
     setFilter(value);
     applyFilter(contacts, value);
   };
+  const onDeleteContact = (id) => {
+    const updatedContacts = contacts.filter((contact) => contact.id !== id);
+    setContacts(updatedContacts);
+    applyFilter(updatedContacts, filter);
+  };
 
   return (
     <>
@@ -49,7 +54,10 @@ function App() {
       </Section>
       <Section title="Contacts">
         <Filter onFilterChange={handleFilterChange} />
-        <ContactList contacts={filteredContacts} />
+        <ContactList
+          contacts={filteredContacts}
+          onDeleteContact={onDeleteContact}
+        />
       </Section>
     </>
   );
