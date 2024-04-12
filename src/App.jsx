@@ -14,19 +14,24 @@ function App() {
   const handleAddContact = (newContact) => {
     const updatedContacts = [...contacts, { ...newContact, id: nanoid() }];
     setContacts(updatedContacts);
-    applyFilter(updatedContacts);
+    applyFilter(updatedContacts, filter);
   };
 
-  const applyFilter = (contactsList) => {
-    const filtered = contactsList.filter((contact) =>
-      contact.name.toLowerCase().includes(filter.toLowerCase())
-    );
+  const applyFilter = (contactsList, filterValue) => {
+    let filtered = contactsList;
+    if (filterValue && filterValue.trim() !== "") {
+      filtered = contactsList.filter(
+        (contact) =>
+          contact.name.toLowerCase().includes(filterValue.toLowerCase()) ||
+          contact.number.includes(filterValue)
+      );
+    }
     setFilteredContacts(filtered);
   };
 
   const handleFilterChange = (value) => {
     setFilter(value);
-    applyFilter(contacts);
+    applyFilter(contacts, value);
   };
 
   return (
