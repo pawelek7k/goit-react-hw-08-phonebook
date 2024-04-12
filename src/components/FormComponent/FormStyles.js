@@ -6,6 +6,11 @@ const FormStyles = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
+
+    label {
+      display: flex;
+      flex-direction: column;
+    }
     input {
       background-color: transparent;
       max-width: 100%;
