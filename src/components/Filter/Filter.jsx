@@ -1,7 +1,7 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
 
-export const Filter = ({ onFilterChange }) => {
+const Filter = ({ onFilterChange }) => {
   const [filter, setFilter] = useState("");
 
   const handleFilterChange = (e) => {

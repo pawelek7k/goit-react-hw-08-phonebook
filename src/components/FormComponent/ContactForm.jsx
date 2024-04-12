@@ -16,10 +16,12 @@ export const ContactForm = ({ onAddContact }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (name.trim() === "" || number.trim() === "") return;
+
     const newContact = {
       id: nanoid(),
-      name: name,
-      number: number,
+      name,
+      number,
     };
     onAddContact(newContact);
     setName("");
