@@ -3,15 +3,25 @@ import styled from "styled-components";
 const ContactListStyles = styled.div`
   ul {
     margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 
     li {
       display: flex;
-      justify-content: space-evenly;
-      letter-spacing: 4px;
+      justify-content: space-between;
+
       align-items: center;
+
+      div {
+        display: flex;
+        flex-direction: column;
+        font-family: "Courier New", Courier, monospace;
+      }
       button {
         background-color: transparent;
         border: none;
+        letter-spacing: 4px;
         padding: 0.5rem 1.5rem;
         color: white;
         font-family: "Permanent Marker", cursive;
