@@ -1,4 +1,28 @@
+@import url("https://fonts.googleapis.com/css2?family=Permanent+Marker&display=swap");
+
 body {
-  background-color: black;
   color: white;
+  background: rgb(11, 11, 14);
+  background: linear-gradient(
+    90deg,
+    rgba(11, 11, 14, 1) 0%,
+    rgba(32, 31, 31, 1) 58%,
+    rgba(41, 56, 59, 1) 100%
+  );
+  font-family: "Permanent Marker", cursive;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+#root {
+  border: 1px solid rgb(184, 180, 180);
+  width: 30%;
+  margin: 0 auto;
+  margin-top: 3rem;
+  border-radius: 1rem;
+  padding: 2rem;
 }

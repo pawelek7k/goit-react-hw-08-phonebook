@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import PropTypes from "prop-types";
 import { useState } from "react";
-
+import FormStyles from "./FormStyles";
 export const ContactForm = ({ onAddContact }) => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
@@ -29,11 +29,13 @@ export const ContactForm = ({ onAddContact }) => {
   };
 
   return (
-    <form action="" onSubmit={handleSubmit}>
-      <input type="text" onChange={handleNameChange} value={name} />
-      <input type="tel" onChange={handleNumberChange} value={number} />
-      <button type="submit">Add contact</button>
-    </form>
+    <FormStyles>
+      <form onSubmit={handleSubmit}>
+        <input type="text" onChange={handleNameChange} value={name} />
+        <input type="tel" onChange={handleNumberChange} value={number} />
+        <button type="submit">Add contact</button>
+      </form>
+    </FormStyles>
   );
 };
 
