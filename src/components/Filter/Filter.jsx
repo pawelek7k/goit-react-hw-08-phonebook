@@ -1,5 +1,6 @@
 import PropTypes from "prop-types";
 import { useState } from "react";
+import FilterStyles from "./FilterStyles";
 
 const Filter = ({ onFilterChange }) => {
   const [filter, setFilter] = useState("");
@@ -11,12 +12,14 @@ const Filter = ({ onFilterChange }) => {
   };
 
   return (
-    <input
-      type="text"
-      value={filter}
-      onChange={handleFilterChange}
-      placeholder="Search..."
-    />
+    <FilterStyles>
+      <input
+        type="text"
+        value={filter}
+        onChange={handleFilterChange}
+        placeholder="Search..."
+      />
+    </FilterStyles>
   );
 };
 

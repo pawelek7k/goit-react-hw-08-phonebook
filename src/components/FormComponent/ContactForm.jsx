@@ -33,7 +33,9 @@ export const ContactForm = ({ onAddContact }) => {
       <form onSubmit={handleSubmit}>
         <input type="text" onChange={handleNameChange} value={name} />
         <input type="tel" onChange={handleNumberChange} value={number} />
-        <button type="submit">Add contact</button>
+        <button type="submit">
+          <span>Add contact</span>
+        </button>
       </form>
     </FormStyles>
   );
