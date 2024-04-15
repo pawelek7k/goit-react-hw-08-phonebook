@@ -1,5 +1,5 @@
 import { nanoid } from "nanoid";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./App.css";
 import { ContactList } from "./components/ContactsList/ContactsList";
 import Filter from "./components/Filter/Filter";
@@ -10,6 +10,22 @@ function App() {
   const [contacts, setContacts] = useState([]);
   const [filteredContacts, setFilteredContacts] = useState([]);
   const [filter, setFilter] = useState("");
+
+  useEffect(() => {
+    const loadContactsFromStorage = () => {
+      const storedContacts = localStorage.getItem("contacts");
+      if (storedContacts) {
+        setContacts(JSON.parse(storedContacts));
+      }
+    };
+
+    loadContactsFromStorage();
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem("contacts", JSON.stringify(contacts));
+    applyFilter(contacts, filter); // Zastosowanie filtra po aktualizacji kontaktów
+  }, [contacts, filter]);
 
   const handleAddContact = (newContact) => {
     const isDuplicate = contacts.some(
@@ -22,7 +38,6 @@ function App() {
     }
     const updatedContacts = [...contacts, { ...newContact, id: nanoid() }];
     setContacts(updatedContacts);
-    applyFilter(updatedContacts, filter);
   };
 
   const applyFilter = (contactsList, filterValue) => {
@@ -44,7 +59,6 @@ function App() {
   const onDeleteContact = (id) => {
     const updatedContacts = contacts.filter((contact) => contact.id !== id);
     setContacts(updatedContacts);
-    applyFilter(updatedContacts, filter);
   };
 
   return (
