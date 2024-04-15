@@ -24,7 +24,7 @@ function App() {
 
   useEffect(() => {
     localStorage.setItem("contacts", JSON.stringify(contacts));
-    applyFilter(contacts, filter); // Zastosowanie filtra po aktualizacji kontaktów
+    applyFilter(contacts, filter);
   }, [contacts, filter]);
 
   const handleAddContact = (newContact) => {
