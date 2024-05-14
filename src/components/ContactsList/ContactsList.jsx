@@ -1,9 +1,12 @@
-import { useSelector } from "react-redux";
-import { getContact } from "../../stores/contacts/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { deleteContact } from "../../stores/contacts/actions";
+import { getContacts } from "../../stores/contacts/selectors";
+
 import ContactListStyles from "./ContactsListStyles";
 
 export const ContactList = () => {
-  const contacts = useSelector(getContact);
+  const contacts = useSelector(getContacts);
+  const dispatch = useDispatch();
 
   return (
     <ContactListStyles>
@@ -15,7 +18,7 @@ export const ContactList = () => {
               <span> {contact.number}</span>
             </div>
 
-            <button onClick={() => onDeleteContact(contact.id)}>
+            <button onClick={() => dispatch(deleteContact(contact.id))}>
               <span> Delete contact</span>
             </button>
           </li>

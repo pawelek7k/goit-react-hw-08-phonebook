@@ -1,12 +1,15 @@
 import { nanoid } from "nanoid";
-import PropTypes from "prop-types";
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { addContact } from "../../stores/contacts/actions";
 import FormStyles from "./FormStyles";
-export const ContactForm = ({ onAddContact }) => {
+
+export const ContactForm = () => {
   const [name, setName] = useState("");
   const [number, setNumber] = useState("");
-
+  const dispatch = useDispatch();
   const loginInputId = nanoid();
+
   const numberInputLabelId = nanoid();
 
   const handleNameChange = (e) => {
@@ -26,7 +29,7 @@ export const ContactForm = ({ onAddContact }) => {
       name,
       number,
     };
-    onAddContact(newContact);
+    dispatch(addContact(newContact));
     setName("");
     setNumber("");
   };
@@ -63,8 +66,4 @@ export const ContactForm = ({ onAddContact }) => {
       </form>
     </FormStyles>
   );
-};
-
-ContactForm.propTypes = {
-  onAddContact: PropTypes.func.isRequired,
 };
