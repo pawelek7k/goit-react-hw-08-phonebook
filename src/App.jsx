@@ -68,10 +68,7 @@ function App() {
       </Section>
       <Section title="Contacts">
         <Filter onFilterChange={handleFilterChange} />
-        <ContactList
-          contacts={filteredContacts}
-          onDeleteContact={onDeleteContact}
-        />
+        <ContactList />
       </Section>
     </>
   );
