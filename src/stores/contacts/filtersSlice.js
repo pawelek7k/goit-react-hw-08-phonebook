@@ -3,6 +3,7 @@ import { statusFilters } from "./constants";
 
 const filtersInitialState = {
   status: statusFilters.all,
+  searchBy: "name",
 };
 
 const filtersSlice = createSlice({
@@ -12,8 +13,11 @@ const filtersSlice = createSlice({
     setStatusFilter(state, action) {
       state.status = action.payload;
     },
+    setSearchBy(state, action) {
+      state.searchBy = action.payload;
+    },
   },
 });
 
-export const { setStatusFilter } = filtersSlice.actions;
+export const { setStatusFilter, setSearchBy } = filtersSlice.actions;
 export const filtersReducer = filtersSlice.reducer;
