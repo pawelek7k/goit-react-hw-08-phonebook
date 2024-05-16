@@ -8,7 +8,12 @@ export const ContactList = () => {
   const dispatch = useDispatch();
 
   if (!contacts || contacts.length === 0) {
-    return <div>No contacts to display</div>;
+    return (
+      <div>
+        <br />
+        No contacts to display
+      </div>
+    );
   }
 
   return (

@@ -28,7 +28,7 @@ const contactSlice = createSlice({
 });
 
 export const { addTask, deleteTask, toggleCompleted } = contactSlice.actions;
-export const contactReducer = createSlice.reducer;
+export const contactsReducer = contactSlice.reducer;
 
 // const contactReducer = (state = contactInitialState, action) => {
 //   switch (action.type) {
