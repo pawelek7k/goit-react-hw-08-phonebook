@@ -7,6 +7,8 @@ export const ContactList = () => {
   const contacts = useSelector(getContacts);
   const dispatch = useDispatch();
 
+  console.log(contacts);
+
   if (!contacts || contacts.length === 0) {
     return (
       <div>
