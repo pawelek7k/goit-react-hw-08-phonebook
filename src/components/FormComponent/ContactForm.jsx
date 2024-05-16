@@ -1,7 +1,7 @@
 import { nanoid } from "nanoid";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../stores/contacts/actions";
+import { addContact } from "../../stores/contacts/reducer";
 import FormStyles from "./FormStyles";
 
 export const ContactForm = () => {
@@ -54,6 +54,7 @@ export const ContactForm = () => {
           <input
             type="tel"
             name="number"
+            id={numberInputLabelId}
             pattern="^\+((?:9[679]|8[035789]|6[789]|5[90]|42|3[578]|2[1-689])|9[0-58]|8[1246]|6[0-6]|5[1-8]|4[013-9]|3[0-469]|2[70]|7|1)(?:\W*\d){0,13}\d$"
             onChange={handleNumberChange}
             value={number}

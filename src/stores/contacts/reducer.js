@@ -6,28 +6,28 @@ const contactSlice = createSlice({
   name: "contact",
   initialState: contactInitialState,
   reducers: {
-    addTask: {
+    addContact: {
       reducer(state, action) {
         state.push(action.payload);
       },
-      prepare(text) {
+      prepare(name, number) {
         return {
           payload: {
-            text,
+            name,
+            number,
             id: nanoid(),
-            completed: false,
           },
         };
       },
     },
-    deleteTask(state, action) {
+    deleteContact(state, action) {
       const index = state.findIndex((c) => c.id === action.payload);
       state.splice(index, 1);
     },
   },
 });
 
-export const { addTask, deleteTask, toggleCompleted } = contactSlice.actions;
+export const { addContact, deleteContact } = contactSlice.actions;
 export const contactsReducer = contactSlice.reducer;
 
 // const contactReducer = (state = contactInitialState, action) => {
