@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../stores/contacts/reducer";
+import { addContact } from "../../stores/contacts/contactsSlice";
 import FormStyles from "./FormStyles";
 
 export const ContactForm = () => {
