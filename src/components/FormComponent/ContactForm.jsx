@@ -1,7 +1,7 @@
 import { nanoid } from "@reduxjs/toolkit";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { addContact } from "../../stores/contacts/contactsSlice";
+import { contactsReducer } from "../../stores/contacts/contactsSlice";
 import FormStyles from "./FormStyles";
 
 export const ContactForm = () => {
@@ -29,7 +29,7 @@ export const ContactForm = () => {
       name,
       number,
     };
-    dispatch(addContact(newContact));
+    dispatch(contactsReducer(newContact));
     setName("");
     setNumber("");
   };
