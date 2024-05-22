@@ -1,37 +1,24 @@
 import { nanoid } from "@reduxjs/toolkit";
-import { useState } from "react";
 import { useDispatch } from "react-redux";
-import { contactsReducer } from "../../stores/contacts/contactsSlice";
+import { addContact } from "../../stores/contacts/api";
 import FormStyles from "./FormStyles";
 
 export const ContactForm = () => {
-  const [name, setName] = useState("");
-  const [number, setNumber] = useState("");
   const dispatch = useDispatch();
   const loginInputId = nanoid();
 
   const numberInputLabelId = nanoid();
 
-  const handleNameChange = (e) => {
-    setName(e.target.value);
-  };
-
-  const handleNumberChange = (e) => {
-    setNumber(e.target.value);
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (name.trim() === "" || number.trim() === "") return;
-
-    const newContact = {
-      id: nanoid(),
-      name,
-      number,
-    };
-    dispatch(contactsReducer(newContact));
-    setName("");
-    setNumber("");
+    const form = e.target;
+    dispatch(
+      addContact({
+        name: e.target.elements.name.value,
+        number: e.target.elements.number.value,
+      })
+    );
+    form.reset();
   };
 
   return (
@@ -44,8 +31,6 @@ export const ContactForm = () => {
             type="text"
             name="name"
             pattern="^[a-zA-Zа-яА-Я]+((['\s\-][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-            onChange={handleNameChange}
-            value={name}
             required
           />
         </label>
@@ -56,8 +41,6 @@ export const ContactForm = () => {
             name="number"
             id={numberInputLabelId}
             pattern="^\+((?:9[679]|8[035789]|6[789]|5[90]|42|3[578]|2[1-689])|9[0-58]|8[1246]|6[0-6]|5[1-8]|4[013-9]|3[0-469]|2[70]|7|1)(?:\W*\d){0,13}\d$"
-            onChange={handleNumberChange}
-            value={number}
             required
           />
         </label>

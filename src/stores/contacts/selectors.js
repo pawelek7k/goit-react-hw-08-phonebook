@@ -1,6 +1,7 @@
-import { statusFilters } from "./constants";
-
-export const selectContacts = (state) => state.contacts.item;
+export const selectContacts = (state) => {
+  console.log(state);
+  return state.contacts?.items;
+};
 
 export const selectFilters = (state) => state.filters.searchBy;
 
@@ -12,12 +13,15 @@ export const searchByContact = (state) => {
   const contacts = selectContacts(state);
   const searchTerm = selectFilters(state);
 
-  switch (searchTerm) {
-    case statusFilters.all:
-      return contacts.filter(
-        (c) => c.name.includes(searchTerm) || c.number.includes(searchTerm)
-      );
-    default:
-      return contacts;
-  }
+  return contacts.filter(
+    (c) => c.name.includes(searchTerm) || c.number.includes(searchTerm)
+  );
+};
+
+export const selectContactsCount = (state) => {
+  const contacts = selectContacts(state);
+
+  return contacts.reduce((count) => {
+    return count;
+  });
 };

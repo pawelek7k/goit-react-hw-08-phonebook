@@ -6,6 +6,7 @@ import ContactListStyles from "./ContactsListStyles";
 export const ContactList = () => {
   const contacts = useSelector(searchByContact);
   const dispatch = useDispatch();
+  console.log(contacts);
 
   return (
     <ContactListStyles>
