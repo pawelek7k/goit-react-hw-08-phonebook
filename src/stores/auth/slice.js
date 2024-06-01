@@ -1,9 +1,10 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { getCookie } from "../../utils/cookies";
 import { logIn, logOut, refreshUser, register } from "./operations";
 
 const initialState = {
   user: { name: null, email: null },
-  token: null,
+  token: getCookie("token"),
   isLoggedIn: false,
   isRefreshing: false,
 };
