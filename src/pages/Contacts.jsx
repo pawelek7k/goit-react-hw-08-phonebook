@@ -21,7 +21,7 @@ export default function Contacts() {
         <title>Your tasks</title>
       </Helmet>
       <ContactForm />
-      <div>{isLoading && "Request in progress..."}</div>
+      <div>{isLoading && "Request in progress.."}</div>
       <Filter />
       <ContactList />
     </>
