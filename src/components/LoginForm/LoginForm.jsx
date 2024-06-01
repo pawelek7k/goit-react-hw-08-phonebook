@@ -39,7 +39,7 @@ export const LoginForm = () => {
         Password
         <input type="password" name="password" />
       </label>
-      <button type="submit">Log In</button>
+      <button type="submit">Log in</button>
     </form>
   );
 };
