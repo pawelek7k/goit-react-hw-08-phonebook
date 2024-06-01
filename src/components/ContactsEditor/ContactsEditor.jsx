@@ -13,7 +13,7 @@ export const ContactsEditor = () => {
       form.reset();
       return;
     }
-    alert("Task cannot be empty. Enter some text!");
+    alert("Contacts cannot be empty. Enter some text!");
   };
 
   return (
