@@ -23,7 +23,7 @@ function App() {
   return isRefreshing ? (
     <b>Refreshing user...</b>
   ) : (
-    <Routes>
+    <Routes basename="/goit-react-hw-08-phonebook">
       <Route path="/" element={<Layout />}>
         <Route index element={<HomePage />} />
         <Route
