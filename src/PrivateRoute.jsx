@@ -7,7 +7,6 @@ import { useAuth } from "./hooks";
  */
 
 export const PrivateRoute = ({ component: Component, redirectTo = "/" }) => {
-  console.log("oki");
   const { isLoggedIn, isRefreshing } = useAuth();
 
   const shouldRedirect = !isLoggedIn && !isRefreshing;
