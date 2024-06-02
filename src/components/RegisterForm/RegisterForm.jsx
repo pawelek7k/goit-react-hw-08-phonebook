@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { register } from "../../stores/auth/operations";
 import FormStyles from "../FormComponent/FormStyles";
@@ -6,7 +7,6 @@ const styles = {
   form: {
     display: "flex",
     flexDirection: "column",
-
     justifyContent: "center",
   },
   label: {
@@ -17,36 +17,65 @@ const styles = {
 
 export const RegisterForm = () => {
   const dispatch = useDispatch();
+  const [formValues, setFormValues] = useState({
+    name: "",
+    email: "",
+    password: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormValues({
+      ...formValues,
+      [name]: value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    const form = e.currentTarget;
-    dispatch(
-      register({
-        name: form.elements.name.value,
-        email: form.elements.email.value,
-        password: form.elements.password.value,
-      })
-    );
-    form.reset();
+    dispatch(register(formValues));
+    setFormValues({
+      name: "",
+      email: "",
+      password: "",
+    });
+  };
+
+  const isFormValid = () => {
+    return formValues.name && formValues.email && formValues.password;
   };
 
   return (
     <FormStyles>
       <form onSubmit={handleSubmit} autoComplete="off" style={styles.form}>
-        <label>
+        <label style={styles.label}>
           Username
-          <input type="text" name="name" />
+          <input
+            type="text"
+            name="name"
+            value={formValues.name}
+            onChange={handleChange}
+          />
         </label>
-        <label>
+        <label style={styles.label}>
           Email
-          <input type="email" name="email" />
+          <input
+            type="email"
+            name="email"
+            value={formValues.email}
+            onChange={handleChange}
+          />
         </label>
-        <label>
+        <label style={styles.label}>
           Password
-          <input type="password" name="password" />
+          <input
+            type="password"
+            name="password"
+            value={formValues.password}
+            onChange={handleChange}
+          />
         </label>
-        <button type="submit">
+        <button type="submit" disabled={!isFormValid()}>
           <span>Register</span>
         </button>
       </form>
